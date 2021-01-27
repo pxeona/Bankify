@@ -5,9 +5,16 @@
   padding: 0;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: 2rem auto 2rem auto;
+}
+
 body {
   background-color: rgb(211, 211, 211);
-  margin: 2rem;
+  margin: 0.5rem 1rem 1rem 1rem;
   font-family: "DM Sans", sans-serif;
 }
 
@@ -18,10 +25,21 @@ header {
 }
 
 #greeting {
-  display: inline-block;
+  margin-top: 1.5rem;
 }
 
 .logo {
-  height: 6rem;
-  width: 6rem;
+  height: 5.5rem;
+  width: 5.5rem;
+}
+
+h1,
+h3,
+h4 {
+  display: inline-block;
+}
+
+#balance {
+  display: flex;
+  justify-content: space-between;
 }
