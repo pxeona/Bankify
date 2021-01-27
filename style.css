@@ -37,7 +37,8 @@ h1,
 h3,
 h4,
 h2,
-h6 {
+h6,
+h5 {
   display: inline-block;
 }
 
@@ -108,4 +109,36 @@ footer {
   justify-content: space-between;
   width: 60%;
   margin: 2rem auto 2rem auto;
+}
+
+#current {
+  display: flex;
+  flex-direction: column;
+}
+
+#transactions {
+  width: 50%;
+  border-radius: 0.5rem 0rem 0rem 0rem;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  height: 55vh;
+}
+
+.transaction {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1rem;
+  border-style: none none groove none;
+}
+
+#transact-amount {
+  align-self: flex-end;
+}
+
+#main-panel {
+  margin: 2rem 0rem 0rem 0rem;
+  height: 80%;
 }
