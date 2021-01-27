@@ -204,7 +204,7 @@ footer {
   transition: all 0.5s;
   font-family: inherit;
   margin-top: 0.5rem;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(10px);
 }
 
@@ -216,4 +216,27 @@ footer {
 
 textarea {
   padding-top: 0.5rem;
+}
+
+.confirm {
+  border-radius: 50rem;
+  height: 1.5rem;
+  width: 10%;
+  font-size: 15px;
+  text-align: center;
+  border: none;
+  resize: none;
+  transition: all 0.5s;
+  font-family: inherit;
+  margin-top: 0.5rem;
+  background-color: white;
+}
+
+.confirm:active {
+  outline: none;
+  transform: translate(5px);
+}
+
+.confirm:focus {
+  outline: none;
 }
