@@ -12,8 +12,8 @@
       <h3 id="greeting">Good morning, Pravin!</h3>
       <img src="logo.png" alt="Logo" class="logo" />
       <div id="login-details">
-        <textarea placeholder="user"></textarea>
-        <textarea placeholder="pin"></textarea>
+        <textarea placeholder="user" class="login-input"></textarea>
+        <textarea placeholder="pin" class="login-input"></textarea>
         <img src="login.png" alt="Login" id="login" />
       </div>
     </header>
@@ -79,9 +79,35 @@
           </div>
         </div>
         <div id="features">
-          <div class="feature" id="transfer"></div>
-          <div class="feature" id="request"></div>
-          <div class="feature" id="close"></div>
+          <div class="feature" id="transfer">
+            <h3 class="feature-heading">Transfer money</h3>
+            <textarea
+              class="feature-input-field"
+              placeholder="Transfer to"
+            ></textarea>
+            <textarea
+              class="feature-input-field"
+              placeholder="Amount"
+            ></textarea>
+          </div>
+          <div class="feature" id="request">
+            <h3 class="feature-heading">Request loan</h3>
+            <textarea
+              class="feature-input-field"
+              placeholder="Amount"
+            ></textarea>
+          </div>
+          <div class="feature" id="close">
+            <h3 class="feature-heading">Close account</h3>
+            <textarea
+              class="feature-input-field"
+              placeholder="Confirm user"
+            ></textarea>
+            <textarea
+              class="feature-input-field"
+              placeholder="Confirm PIN"
+            ></textarea>
+          </div>
         </div>
       </section>
     </main>
