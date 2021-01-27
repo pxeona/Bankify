@@ -203,7 +203,6 @@ footer {
   resize: none;
   transition: all 0.5s;
   font-family: inherit;
-  margin-top: 0.5rem;
   background-color: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(10px);
 }
@@ -239,4 +238,13 @@ textarea {
 
 .confirm:focus {
   outline: none;
+}
+
+.feature-content {
+  display: flex;
+  align-items: center;
+}
+
+.feature-content > * {
+  margin: 0.25rem;
 }
