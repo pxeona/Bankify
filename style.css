@@ -22,10 +22,7 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
-
-#greeting {
-  margin-top: 1.5rem;
+  align-items: center;
 }
 
 .logo {
@@ -127,15 +124,13 @@ footer {
 }
 
 .transaction {
-  display: flex;
-  flex-direction: row;
   align-items: center;
   padding: 1rem;
   border-style: none none groove none;
 }
 
-#transact-amount {
-  align-self: flex-end;
+.transact-amount {
+  float: right;
 }
 
 #main-panel {
@@ -169,4 +164,23 @@ footer {
 
 #features > * {
   margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
+
+.transaction > * {
+  margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
+
+.deposit,
+.withdrawal {
+  color: white;
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+}
+
+.deposit {
+  background-color: green;
+}
+
+.withdrawal {
+  background-color: red;
 }
