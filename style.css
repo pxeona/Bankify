@@ -14,7 +14,7 @@ main {
 
 body {
   background-color: rgb(211, 211, 211);
-  margin: 0.5rem 1rem 1rem 1rem;
+  margin: 0.5rem 2rem 0.5rem 2rem;
   font-family: "DM Sans", sans-serif;
 }
 
@@ -35,11 +35,77 @@ header {
 
 h1,
 h3,
-h4 {
+h4,
+h2,
+h6 {
   display: inline-block;
 }
 
 #balance {
   display: flex;
   justify-content: space-between;
+}
+
+textarea {
+  border-radius: 50rem;
+  height: 2rem;
+  width: 6rem;
+  font-size: 20px;
+  text-align: center;
+  border: none;
+  resize: none;
+  transition: all 0.5s;
+  font-family: inherit;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+#login {
+  height: 1.5rem;
+  width: 1.5rem;
+  border: none;
+  background-color: rgb(211, 211, 211);
+  transition: all 0.5s;
+  outline: none;
+}
+
+#login:active {
+  outline: none;
+  transform: translate(5px);
+}
+
+#login-details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#login-details > * {
+  margin: 0px 3px 0px 3px;
+}
+
+#synopsis {
+  align-items: center;
+}
+
+.amount {
+  margin-right: 2rem;
+}
+
+.credit {
+  color: green;
+}
+
+.debit {
+  color: red;
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 60%;
+  margin: 2rem auto 2rem auto;
 }
