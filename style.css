@@ -140,5 +140,33 @@ footer {
 
 #main-panel {
   margin: 2rem 0rem 0rem 0rem;
-  height: 80%;
+  display: flex;
+  flex-direction: row;
+}
+
+#features {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.feature {
+  height: 33.3%;
+  border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
+
+#transfer {
+  background-color: #ede576;
+}
+
+#request {
+  background-color: #ec4c4c;
+}
+
+#close {
+  background-color: green;
+}
+
+#features > * {
+  margin: 0.5rem 0.5rem 0.5rem 0.5rem;
 }
