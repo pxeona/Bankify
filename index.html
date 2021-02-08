@@ -12,8 +12,8 @@
       <h3 id="greeting">Good morning, Pravin!</h3>
       <img src="logo.png" alt="Logo" class="logo" />
       <div id="login-details">
-        <textarea placeholder="user" class="login-input"></textarea>
-        <textarea placeholder="pin" class="login-input"></textarea>
+        <textarea id="user" placeholder="user" class="login-input"></textarea>
+        <textarea id="pin" placeholder="pin" class="login-input"></textarea>
         <img src="login.png" alt="Login" id="login" />
       </div>
     </header>
@@ -23,7 +23,7 @@
           <h3>Current balance</h3>
           <h5>As of 27/01/2021, 11:32</h5>
         </div>
-        <h1>25,232$</h1>
+        <h1 id="currBalance">25,232$</h1>
       </section>
       <section id="main-panel">
         <div id="transactions">
@@ -85,12 +85,14 @@
               <textarea
                 class="feature-input-field"
                 placeholder="Transfer to"
+                id="transferTo"
               ></textarea>
               <textarea
                 class="feature-input-field"
                 placeholder="Amount"
+                id="amount"
               ></textarea>
-              <button class="confirm">→</button>
+              <button class="confirm" id="confirmTransfer">→</button>
             </div>
           </div>
           <div class="feature" id="request">
@@ -99,8 +101,9 @@
               <textarea
                 class="feature-input-field"
                 placeholder="Amount"
+                id="loanAmount"
               ></textarea>
-              <button class="confirm">→</button>
+              <button class="confirm" id="confirmRequest">→</button>
             </div>
           </div>
           <div class="feature" id="close">
@@ -109,12 +112,14 @@
               <textarea
                 class="feature-input-field"
                 placeholder="Confirm user"
+                id="confirmUser"
               ></textarea>
               <textarea
                 class="feature-input-field"
                 placeholder="Confirm PIN"
+                id="confirmPIN"
               ></textarea>
-              <button class="confirm">→</button>
+              <button class="confirmClosing">→</button>
             </div>
           </div>
         </div>
@@ -123,11 +128,11 @@
     <footer>
       <div id="synopsis">
         <h6>IN</h6>
-        <h2 class="amount credit">27,789$</h2>
+        <h2 class="amount credit" id="IN">27,789$</h2>
         <h6>OUT</h6>
-        <h2 class="amount debit">2,789$</h2>
+        <h2 class="amount debit" id="OUT">2,789$</h2>
         <h6>INTEREST</h6>
-        <h2 class="amount credit">277$</h2>
+        <h2 class="amount credit" id="interest">277$</h2>
       </div>
       <h5>You will be logged out in 04:23</h5>
     </footer>
