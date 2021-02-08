@@ -64,4 +64,18 @@ const currencies = new Map([
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
+const displayTransactions = function (movements) {
+  movements.forEach(function (mov, i) {
+    const type = mov > 0 ? "deposit" : "withdrawal";
+
+    const htmlTag = `<div class="transaction">
+    <h5 class="${type}">${type.toUpperCase()}</h5>
+    <h3 class="transact-amount">${mov}</h3>
+  </div>`;
+    transactions.insertAdjacentHTML("afterbegin", htmlTag);
+  });
+};
+
+displayTransactions(account1.movements);
+
 /////////////////////////////////////////////////
