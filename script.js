@@ -62,8 +62,6 @@ const currencies = new Map([
   ["GBP", "Pound sterling"],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-
 const displayTransactions = function (movements) {
   movements.forEach(function (mov, i) {
     const type = mov > 0 ? "deposit" : "withdrawal";
@@ -90,4 +88,9 @@ const createUserNames = (accounts) => {
 
 createUserNames(accounts);
 
-console.log(accounts);
+const findBalance = function (movements) {
+  const balance = movements.reduce((acc, movement) => acc + movement, 0);
+  currBalance.innerHTML = `${balance}$`;
+};
+
+findBalance(account1.movements);
