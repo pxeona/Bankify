@@ -68,7 +68,7 @@ const displayTransactions = function (movements) {
 
     const htmlTag = `<div class="transaction">
     <h5 class="${type}">${type.toUpperCase()}</h5>
-    <h3 class="transact-amount">${mov}</h3>
+    <h3 class="transact-amount">${mov}$</h3>
   </div>`;
     transactions.insertAdjacentHTML("afterbegin", htmlTag);
   });
@@ -94,3 +94,24 @@ const findBalance = function (movements) {
 };
 
 findBalance(account1.movements);
+
+const calcSummary = function (movements) {
+  const incomes = movements
+    .filter((mov) => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+
+  const out = movements
+    .filter((mov) => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+
+  const int = movements
+    .filter((mov) => mov > 0)
+    .map((mov) => (mov * 1.2) / 100)
+    .reduce((acc, mov) => acc + mov, 0);
+
+  IN.textContent = `${incomes}$`;
+  OUT.textContent = `${Math.abs(out)}$`;
+  interest.textContent = `${int}$`;
+};
+
+calcSummary(account1.movements);
