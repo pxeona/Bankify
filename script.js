@@ -31,6 +31,9 @@ const account4 = {
 
 const accounts = [account1, account2, account3, account4];
 
+const mainPanel = document.querySelector("main");
+const footer = document.querySelector("footer");
+
 const greeting = document.querySelector("#greeting");
 const user = document.querySelector("#user");
 const pin = document.querySelector("#pin");
@@ -63,6 +66,7 @@ const currencies = new Map([
 ]);
 
 const displayTransactions = function (movements) {
+  transactions.innerHTML = "";
   movements.forEach(function (mov, i) {
     const type = mov > 0 ? "deposit" : "withdrawal";
 
@@ -70,11 +74,10 @@ const displayTransactions = function (movements) {
     <h5 class="${type}">${type.toUpperCase()}</h5>
     <h3 class="transact-amount">${mov}$</h3>
   </div>`;
+
     transactions.insertAdjacentHTML("afterbegin", htmlTag);
   });
 };
-
-displayTransactions(account1.movements);
 
 const createUserNames = (accounts) => {
   accounts.forEach((account) => {
@@ -93,20 +96,18 @@ const findBalance = function (movements) {
   currBalance.innerHTML = `${balance}$`;
 };
 
-findBalance(account1.movements);
-
-const calcSummary = function (movements) {
-  const incomes = movements
+const calcSummary = function (account) {
+  const incomes = account.movements
     .filter((mov) => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
 
-  const out = movements
+  const out = account.movements
     .filter((mov) => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
 
-  const int = movements
+  const int = account.movements
     .filter((mov) => mov > 0)
-    .map((mov) => (mov * 1.2) / 100)
+    .map((mov) => (mov * account.interestRate) / 100)
     .reduce((acc, mov) => acc + mov, 0);
 
   IN.textContent = `${incomes}$`;
@@ -114,4 +115,17 @@ const calcSummary = function (movements) {
   interest.textContent = `${int}$`;
 };
 
-calcSummary(account1.movements);
+document.getElementById("login").addEventListener("click", function () {
+  const loggedAccount = accounts.find(
+    (account) => account.username === user.value
+  );
+
+  if (loggedAccount?.pin === Number(pin.value)) {
+    greeting.textContent = `Welcome back, ${loggedAccount.owner}`;
+    mainPanel.style.opacity = 100;
+    footer.style.opacity = 100;
+    displayTransactions(loggedAccount.movements);
+    findBalance(loggedAccount.movements);
+    calcSummary(loggedAccount);
+  }
+});

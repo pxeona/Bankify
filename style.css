@@ -11,6 +11,7 @@ main {
   width: 70%;
   margin: 2rem auto 2rem auto;
   transition: all 0.5s;
+  opacity: 0;
 }
 
 body {
@@ -109,6 +110,8 @@ footer {
   justify-content: space-between;
   width: 70%;
   margin: 2rem auto 2rem auto;
+  opacity: 0;
+  transition: all 0.5s;
 }
 
 #current {
