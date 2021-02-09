@@ -29,6 +29,8 @@ const account4 = {
   pin: 4444,
 };
 
+//DOM selectors
+
 const accounts = [account1, account2, account3, account4];
 
 const mainPanel = document.querySelector("main");
@@ -65,6 +67,8 @@ const currencies = new Map([
   ["GBP", "Pound sterling"],
 ]);
 
+//Display all the transactions for the logged-in user
+
 const displayTransactions = function (movements) {
   transactions.innerHTML = "";
   movements.forEach(function (mov, i) {
@@ -79,6 +83,7 @@ const displayTransactions = function (movements) {
   });
 };
 
+//Generate usernames for the accounts
 const createUserNames = (accounts) => {
   accounts.forEach((account) => {
     account.username = account.owner
@@ -91,11 +96,13 @@ const createUserNames = (accounts) => {
 
 createUserNames(accounts);
 
+//Find and display balance of a logged-in user
 const findBalance = function (movements) {
   const balance = movements.reduce((acc, movement) => acc + movement, 0);
   currBalance.innerHTML = `${balance}$`;
 };
 
+//Calculate and display summary (in, out and interest) of the logged-in user
 const calcSummary = function (account) {
   const incomes = account.movements
     .filter((mov) => mov > 0)
@@ -115,6 +122,9 @@ const calcSummary = function (account) {
   interest.textContent = `${int}$`;
 };
 
+//Event listeners
+
+//Login
 document.getElementById("login").addEventListener("click", function () {
   const loggedAccount = accounts.find(
     (account) => account.username === user.value
