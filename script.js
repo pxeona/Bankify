@@ -144,7 +144,7 @@ document.getElementById("login").addEventListener("click", function () {
     greeting.textContent = `Welcome back, ${
       loggedAccount.owner.split(" ")[0]
     }!`;
-    mainPanel.style.opacity = 100;
+    mainPanel.style.opacity = 100; //Display the panel if credentials are correct
     footer.style.opacity = 100;
     updateUI(loggedAccount);
     user.value = pin.value = "";
@@ -200,6 +200,7 @@ confirmRequest.addEventListener("click", function () {
   const amt = Number(loanAmount.value);
 
   if (amt > 0 && loggedAccount.movements.some((mov) => mov >= amt * 0.1)) {
+    //Credit loan only if there is atleast one deposit which is 0.1 times the requested amount
     loggedAccount.movements.push(amt);
     updateUI(loggedAccount);
   }
