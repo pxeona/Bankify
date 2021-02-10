@@ -1,6 +1,6 @@
 "use strict";
 
-// Data
+// Data (mimicking API responses)
 const account1 = {
   owner: "Pravin Xeona",
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
@@ -147,6 +147,7 @@ document.getElementById("login").addEventListener("click", function () {
     mainPanel.style.opacity = 100;
     footer.style.opacity = 100;
     updateUI(loggedAccount);
+    user.value = pin.value = "";
   }
 });
 
@@ -166,5 +167,29 @@ confirmTransfer.addEventListener("click", function () {
     loggedAccount.movements.push(-amt);
     recepientAccount.movements.push(amt);
     updateUI(loggedAccount);
+    transferTo.value = amount.value = "";
+  }
+});
+
+//close account
+
+confirmClosing.addEventListener("click", function () {
+  if (
+    confirmUser.value === loggedAccount.username &&
+    Number(confirmPIN.value) === loggedAccount.pin
+  ) {
+    const index = accounts.findIndex(
+      (account) => account.username === loggedAccount.username
+    );
+
+    //Delete the account
+    accounts.splice(index, 1);
+
+    //Logout
+    mainPanel.style.opacity = 0;
+    footer.style.opacity = 0;
+    greeting.textContent = "Login to continue";
+
+    confirmUser.value = confirmPIN.value = "";
   }
 });
