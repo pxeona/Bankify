@@ -193,3 +193,16 @@ confirmClosing.addEventListener("click", function () {
     confirmUser.value = confirmPIN.value = "";
   }
 });
+
+//Request loan
+
+confirmRequest.addEventListener("click", function () {
+  const amt = Number(loanAmount.value);
+
+  if (amt > 0 && loggedAccount.movements.some((mov) => mov >= amt * 0.1)) {
+    loggedAccount.movements.push(amt);
+    updateUI(loggedAccount);
+  }
+
+  loanAmount.value = "";
+});
