@@ -67,6 +67,8 @@ const currencies = new Map([
   ["GBP", "Pound sterling"],
 ]);
 
+let loggedAccount;
+
 //Display all the transactions for the logged-in user
 
 const displayTransactions = function (movements) {
@@ -97,8 +99,9 @@ const createUserNames = (accounts) => {
 createUserNames(accounts);
 
 //Find and display balance of a logged-in user
-const findBalance = function (movements) {
-  const balance = movements.reduce((acc, movement) => acc + movement, 0);
+const findBalance = function (account) {
+  const balance = account.movements.reduce((acc, movement) => acc + movement, 0);
+  account.balance = balance;
   currBalance.innerHTML = `${balance}$`;
 };
 
@@ -126,7 +129,7 @@ const calcSummary = function (account) {
 
 //Login
 document.getElementById("login").addEventListener("click", function () {
-  const loggedAccount = accounts.find(
+  loggedAccount = accounts.find(
     (account) => account.username === user.value
   );
 
@@ -139,3 +142,13 @@ document.getElementById("login").addEventListener("click", function () {
     calcSummary(loggedAccount);
   }
 });
+
+//Transfer feature
+confirmTransfer.addEventListener('click', function() {
+  const recepient = transferTo.value;
+  const amt = amount.value;
+
+  const recepientAccount = accounts.find(acc => acc.username === recepient);
+
+  if(Number(amt) > 0 && recepientAccount && recepientAccount?.username !== loggedAccount)
+})
