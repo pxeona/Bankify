@@ -100,7 +100,10 @@ createUserNames(accounts);
 
 //Find and display balance of a logged-in user
 const findBalance = function (account) {
-  const balance = account.movements.reduce((acc, movement) => acc + movement, 0);
+  const balance = account.movements.reduce(
+    (acc, movement) => acc + movement,
+    0
+  );
   account.balance = balance;
   currBalance.innerHTML = `${balance}$`;
 };
@@ -125,30 +128,43 @@ const calcSummary = function (account) {
   interest.textContent = `${int}$`;
 };
 
+const updateUI = function (account) {
+  displayTransactions(loggedAccount.movements);
+  findBalance(loggedAccount);
+  calcSummary(loggedAccount);
+};
+
 //Event listeners
 
 //Login
 document.getElementById("login").addEventListener("click", function () {
-  loggedAccount = accounts.find(
-    (account) => account.username === user.value
-  );
+  loggedAccount = accounts.find((account) => account.username === user.value);
 
   if (loggedAccount?.pin === Number(pin.value)) {
-    greeting.textContent = `Welcome back, ${loggedAccount.owner}`;
+    greeting.textContent = `Welcome back, ${
+      loggedAccount.owner.split(" ")[0]
+    }!`;
     mainPanel.style.opacity = 100;
     footer.style.opacity = 100;
-    displayTransactions(loggedAccount.movements);
-    findBalance(loggedAccount.movements);
-    calcSummary(loggedAccount);
+    updateUI(loggedAccount);
   }
 });
 
 //Transfer feature
-confirmTransfer.addEventListener('click', function() {
+confirmTransfer.addEventListener("click", function () {
   const recepient = transferTo.value;
-  const amt = amount.value;
+  const amt = Number(amount.value);
 
-  const recepientAccount = accounts.find(acc => acc.username === recepient);
+  const recepientAccount = accounts.find((acc) => acc.username === recepient);
 
-  if(Number(amt) > 0 && recepientAccount && recepientAccount?.username !== loggedAccount)
-})
+  if (
+    amt > 0 &&
+    recepientAccount &&
+    recepientAccount?.username !== loggedAccount.username &&
+    loggedAccount.balance >= amt
+  ) {
+    loggedAccount.movements.push(-amt);
+    recepientAccount.movements.push(amt);
+    updateUI(loggedAccount);
+  }
+});
